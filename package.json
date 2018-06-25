@@ -1,0 +1,25 @@
+{
+  "name": "snacks-machine",
+  "version": "1.0.0",
+  "description": "A system to communicate with the snacks machine",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/weslopes/snacks-machine.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/weslopes/snacks-machine/issues"
+  },
+  "homepage": "https://github.com/weslopes/snacks-machine#readme",
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.13.0"
+  }
+}
