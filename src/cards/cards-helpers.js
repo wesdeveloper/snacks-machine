@@ -1,5 +1,7 @@
 import Joi from 'joi';
 
+const idRegex = /^[a-f\d]{24}$/i;
+
 export const validateParam = (schema, name) => (req, res, next) => {
   const result = Joi.validate({ param: req.params[name] }, schema);
   if (result.error) {
@@ -33,8 +35,11 @@ export const validateBody = schema => (req, res, next) => {
 };
 
 export const schemas = {
+  idSchema: Joi.object().keys({
+    param: Joi.string().regex(idRegex).required(),
+  }),
   cardSchema: Joi.object().keys({
-    credit: Joi.number().required(),
+    credit: Joi.number(),
     person_id: Joi.number().required(),
   }),
   cardUpdateSchema: Joi.object().keys({
