@@ -44,8 +44,13 @@ A list of all avaliable routes in API:
 ## Built With
 
 * [Express](https://expressjs.com/) - Fast, unopinionated, minimalist web framework for Node.js
+
 * [MongoDB](https://www.mongodb.com/) - MongoDB is an open-source document database that provides high performance, high availability, and automatic scaling.
+
+* [Joi](https://github.com/hapijs/joi) - Object schema description language and validator for JavaScript objects.
+
 * [Mocha](https://mochajs.org/) - Mocha is a feature-rich JavaScript test framework running on Node.js and in the browser.
+
 * [Chai](http://www.chaijs.com) - Chai is a BDD / TDD assertion library for node and the browser that can be delightfully paired with any javascript testing framework.
 
 ## Authors
