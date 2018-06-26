@@ -5,6 +5,7 @@ const CardSchema = mongoose.Schema({
   person_id: Number,
   last_charge: Date,
   history: Array,
+  status: Boolean,
 }, {
   timestamps: true,
 });
@@ -18,8 +19,12 @@ const cardModel = () => {
     card.save();
   }).then(card => Card.findById(card._id));
 
-  const create = async ({ credit = 5.50, person_id, last_charge = Date.now() }) => {
-    const card = new Card({ credit, person_id, last_charge });
+  const create = async ({
+    credit = 5.50, person_id, last_charge = Date.now(), status = true,
+  }) => {
+    const card = new Card({
+      credit, person_id, last_charge, status,
+    });
     return card.save();
   };
 
@@ -31,12 +36,17 @@ const cardModel = () => {
     cardid, { credit: 5.50, last_charge: Date.now() },
   );
 
+  const update = (cardid, data) =>
+    Card.findByIdAndUpdate(cardid, data)
+      .then(card => Card.findById(card._id));
+
   return {
     buy,
     create,
     getAll,
     getById,
     defaultCharge,
+    update,
   };
 };
 

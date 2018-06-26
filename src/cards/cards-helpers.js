@@ -41,10 +41,12 @@ export const schemas = {
   cardSchema: Joi.object().keys({
     credit: Joi.number(),
     person_id: Joi.number().required(),
+    status: Joi.boolean(),
   }),
   cardUpdateSchema: Joi.object().keys({
     credit: Joi.number(),
     person_id: Joi.number(),
+    status: Joi.boolean(),
   }),
   buySchema: Joi.object().keys({
     price: Joi.number().required(),

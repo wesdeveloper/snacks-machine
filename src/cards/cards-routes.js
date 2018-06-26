@@ -5,6 +5,7 @@ export default (router) => {
   router
     .post('/', validateBody(schemas.cardSchema), CardsController.create)
     .get('/:cardid', validateParam(schemas.idSchema, 'cardid'), CardsController.getById)
+    .put('/:cardid', [validateParam(schemas.idSchema, 'cardid'), validateBody(schemas.cardUpdateSchema)], CardsController.update)
     .get('/', CardsController.getAll)
     .patch('/:cardid/buy', [validateParam(schemas.idSchema, 'cardid'), validateBody(schemas.buySchema)], CardsController.buy);
 

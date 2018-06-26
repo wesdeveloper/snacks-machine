@@ -38,7 +38,7 @@ A list of all avaliable routes in API:
 | HTTP METHOD | POST  | GET | PUT | PATCH | DELETE|
 | ----------- | ----- | --- | ---- | ----- | ------|
 | /api/cards  | Create a new card | List all cards | - | - | - |
-| /api/cards/:cardid | - | Get a card by id | - | - | - |
+| /api/cards/:cardid | - | Get a card by id | Update um card informations | - | - |
 | /api/cards/:cardid/buy | - | - | - | Try buy a snack | - |
 
 ## Built With
