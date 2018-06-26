@@ -24,7 +24,7 @@ describe('Cards tests', () => {
         done(err);
       });
   });
-  it('Should get a card by id /api/cards GET', (done) => {
+  it('Should get a card by id /api/cards/:cardid GET', (done) => {
     request
       .get(`/api/cards/${cardCreated._id}`)
       .expect(200)
@@ -35,12 +35,33 @@ describe('Cards tests', () => {
         done(err);
       });
   });
-  it('Should try get a card that does not exist /api/cards GET', (done) => {
+  it('Should try get a card that does not exist /api/cards/:cardid GET', (done) => {
     request
       .get('/api/cards/5b3156345a5d52164d377507')
       .expect(404)
       .end((err, res) => {
         assert.strictEqual('not found!', res.body.message);
+        done(err);
+      });
+  });
+  it('Should buy a coca-cola /api/cards/:cardid/buy PATCH', (done) => {
+    request
+      .patch(`/api/cards/${cardCreated._id}/buy`)
+      .send({ price: 2.70, item: 'coca-cola' })
+      .expect(201)
+      .end((err, res) => {
+        assert.strictEqual('success', res.body.message);
+        done(err);
+      });
+  });
+
+  it('Should try buy a snack without enough credit /api/cards/:cardid/buy PATCH', (done) => {
+    request
+      .patch(`/api/cards/${cardCreated._id}/buy`)
+      .send({ price: 100.70, item: 'coca-cola' })
+      .expect(304)
+      .end((err, res) => {
+        assert.isEmpty(res.body);
         done(err);
       });
   });

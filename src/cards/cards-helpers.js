@@ -46,4 +46,8 @@ export const schemas = {
     credit: Joi.number(),
     person_id: Joi.number(),
   }),
+  buySchema: Joi.object().keys({
+    price: Joi.number().required(),
+    item: Joi.string().required(),
+  }),
 };
