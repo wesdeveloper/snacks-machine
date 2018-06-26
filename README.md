@@ -2,9 +2,55 @@
 
 A system to communicate with the snacks machine.
 
+### Prerequisites
+
+You need to have node/npm and mongo installed on your machine.
+
 ## Getting Started
 
 Just clone, install dependencies and run with npm script.
+
+To clone the project:
+```
+git clone https://github.com/weslopes/snacks-machine.git
+```
+
+Enter the project directory:
+```
+cd snacks-machine
+```
+Install all dependencies:
+```
+npm install
+```
+
+### TESTS
+
+To run tests just run npm test command.
+```
+npm test
+```
+
+## ROUTES
+
+A list of all avaliable routes in API:
+
+| HTTP METHOD | POST  | GET | PUT | PATCH | DELETE|
+| ----------- | ----- | --- | ---- | ----- | ------|
+| /api/cards  | Create a new card | List all cards | - | - | - |
+| /api/cards/:cardid | - | Get a card by id | - | - | - |
+| /api/cards/:cardid/buy | - | - | - | Try buy a snack | - |
+
+## Built With
+
+* [Express](https://expressjs.com/) - Fast, unopinionated, minimalist web framework for Node.js
+* [MongoDB](https://www.mongodb.com/) - MongoDB is an open-source document database that provides high performance, high availability, and automatic scaling.
+* [Mocha](https://mochajs.org/) - Mocha is a feature-rich JavaScript test framework running on Node.js and in the browser.
+* [Chai](http://www.chaijs.com) - Chai is a BDD / TDD assertion library for node and the browser that can be delightfully paired with any javascript testing framework.
+
+## Authors
+
+* **Wesley Lopes** - *BackEnd Developer NodeJs* - [weslopes](https://github.com/weslopes)
 
 ## License
 
