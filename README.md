@@ -8,7 +8,7 @@ You need to have node/npm and mongo installed on your machine.
 
 ## Getting Started
 
-Just clone, install dependencies and run with npm script.
+Clone the project, install dependencies, set env variables and run with npm script.
 
 To clone the project:
 ```
@@ -16,12 +16,24 @@ git clone https://github.com/weslopes/snacks-machine.git
 ```
 
 Enter the project directory:
+
 ```
 cd snacks-machine
 ```
+
 Install all dependencies:
 ```
 npm install
+```
+
+Create a file .env based .env.example, after that open .env file and set your corret values:
+```
+cp .env.example .env
+```
+
+Now you can start the server:
+```
+npm start
 ```
 
 ### TESTS
@@ -29,6 +41,18 @@ npm install
 To run tests just run npm test command.
 ```
 npm test
+```
+
+### BUILD
+
+To make a build version of the server just run npm run build comand and folder 'dist' will be created whit de files builded:
+```
+npm run build
+```
+
+Tor run the builded version use npm run server:
+```
+npm run server
 ```
 
 ## ROUTES
