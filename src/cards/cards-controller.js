@@ -17,7 +17,7 @@ export default {
 
     const creditResult = card.credit - price;
 
-    if (creditResult <= 0) {
+    if (creditResult < 0) {
       return res.status(304).send();
     }
 

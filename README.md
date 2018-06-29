@@ -1,10 +1,10 @@
 # Machine Snacks
 
-A system to communicate with the snacks machine.
+A system to communicate with the snacks machine, and make the control of credits on the card.
 
 ### Prerequisites
 
-You need to have node/npm and mongo installed on your machine.
+You need to have node/npm and mongodb installed on your machine.
 
 ## Getting Started
 
@@ -26,7 +26,7 @@ Install all dependencies:
 npm install
 ```
 
-Create a file .env based .env.example, after that open .env file and set your corret values:
+Create a file .env based on .env.example, after that open .env file and set your corret values:
 ```
 cp .env.example .env
 ```
@@ -38,7 +38,7 @@ npm start
 
 ### TESTS
 
-To run tests just run npm test command.
+To run tests just run npm test command:
 ```
 npm test
 ```
