@@ -3,7 +3,7 @@ jobs:
   build: .
   test:
     docker:
-      - image: circleci/node:8
+      - image: circleci/node:8.9.4
       - image: mongo
 
     working_directory: ~/snacks-machine
@@ -16,7 +16,10 @@ jobs:
           command: 'sudo npm install -g npm@latest'
       - run:
           name: instal-babel
-          command: 'sudo npm install -g npm@latest'
+          command: 'sudo npm install --global babel-cli'
+            - run:
+          name: babel-core
+          command: 'npm install --save-dev babel-core'
       - run:
           name: Setup Dependencies
           command: npm install
