@@ -1,15 +1,19 @@
 version: 2
+dependencies:
+  override:
+    - nvm install 8 && npm install
 jobs:
-  machine:
-    node:
-      version: 8.9.0
   build: .
   test:
     docker:
       - image: circleci/node:8
       - image: mongo
-
-    working_directory: ~/snacks-machine
+    dependencies:
+      override:
+        - nvm use 8 && npm test
+      environment:
+        URL_MONGO_TEST=mongodb://localhost:27017/snacks_test
+      working_directory: ~/snacks-machine
     steps:
       - checkout
       - run:
