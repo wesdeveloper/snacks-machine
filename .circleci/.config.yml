@@ -3,12 +3,20 @@ jobs:
   build: .
   test:
     docker:
-      - image: circleci/node
+      - image: circleci/node:8
       - image: mongo
 
     working_directory: ~/snacks-machine
     steps:
       - checkout
+      - restore_cache: # special step to restore the dependency cache
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: update-npm
+          command: 'sudo npm install -g npm@latest'
+      - run:
+          name: instal-babel
+          command: 'sudo npm install -g npm@latest'
       - run:
           name: Setup Dependencies
           command: npm install
@@ -16,7 +24,7 @@ jobs:
           name: Test
           command: npm test
           environment:
-            URL_MONGO_TEST=mongodb://db:27017/snacks_test
+            URL_MONGO_TEST=mongodb://localhost:27017/snacks_test
 workflows:
   version: 2
   build_and_test:
