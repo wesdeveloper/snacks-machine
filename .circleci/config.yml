@@ -4,7 +4,9 @@ jobs:
     docker:
       - image: circleci/node:chakracore-8
       - image: mongo
-      working_directory: ~/snacks-machine
+
+    working_directory: ~/snacks-machine
+    
     steps:
       - checkout
       - run:
