@@ -1,6 +1,5 @@
 version: 2
 jobs:
-  build: .
   test:
     docker:
       - image: circleci/node:chakracore-8
@@ -25,11 +24,3 @@ jobs:
           command: npm test
           environment:
             URL_MONGO_TEST=mongodb://localhost:27017/snacks_test
-workflows:
-  version: 2
-  build_and_test:
-    jobs:
-      - build
-      - test:
-          requires:
-            - build
