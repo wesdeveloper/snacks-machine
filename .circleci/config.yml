@@ -1,21 +1,33 @@
 version: 2
 jobs:
   build:
+    machine: true
+    steps:
+      - run:
+          name: Install Docker Compose
+          command: |
+            sudo curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose > ~/docker-compose
+            sudo chmod +x ~/docker-compose
+            sudo mv ~/docker-compose /usr/local/bin/docker-compose
+      - run:
+          name: Start container and verify it's working
+          command: |
+            set -x
+            docker-compose build
+  test:
     docker:
       - image: circleci/node:chakracore-8
-      - image: mongo
+      - image: circleci/mongo
 
-    working_directory: ~/snacks-machine
-    
     steps:
-      - checkout
+      - checkout      
       - run:
           name: update-npm
           command: 'sudo npm install -g npm@latest'
       - run:
           name: instal-babel
           command: 'sudo npm install --global babel-cli'
-            - run:
+      - run:
           name: babel-core
           command: 'npm install --save-dev babel-core'
       - run:
@@ -25,4 +37,12 @@ jobs:
           name: Test
           command: npm test
           environment:
-            URL_MONGO_TEST=mongodb://localhost:27017/snacks_test
+            URL_MONGO_TEST: mongodb://localhost:27017/snacks_test
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build:
+          type: approval
+          requires:
+            - test
