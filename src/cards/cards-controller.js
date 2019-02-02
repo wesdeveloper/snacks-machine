@@ -45,7 +45,7 @@ export default {
       return res.status(404).send({ message: 'not found!' });
     }
 
-    if (card.status && (card.last_charge !== Date.now())) {
+    if (card.status && card.last_charge !== Date.now()) {
       card = await CardsModel.defaultCharge(cardid);
     }
 

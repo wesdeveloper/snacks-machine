@@ -13,9 +13,9 @@ const app = express();
 
 let mongo_url;
 
-switch(process.env.NODE_ENV) {
+switch (process.env.NODE_ENV) {
   case 'production': {
-    mongo_url =  process.env.URL_MONGO_PRODUCTION;
+    mongo_url = process.env.URL_MONGO_PRODUCTION;
     break;
   }
   case 'test': {

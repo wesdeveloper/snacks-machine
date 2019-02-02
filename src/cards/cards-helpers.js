@@ -35,7 +35,9 @@ export const validateBody = schema => (req, res, next) => {
 
 export const schemas = {
   idSchema: Joi.object().keys({
-    param: Joi.string().regex(idRegex).required(),
+    param: Joi.string()
+      .regex(idRegex)
+      .required(),
   }),
   cardSchema: Joi.object().keys({
     credit: Joi.number(),
