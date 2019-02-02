@@ -1,18 +1,27 @@
 {
-    "extends": "airbnb-base",
-    "rules": {
-        "max-len": 1,
-        "no-console": 0,
-        "no-undef": 0,
-        "no-underscore-dangle": 0,
-        "no-param-reassign": 0,
-        "eol-last": 2,
-        "camelcase": 0,
-        "consistent-return": 0,
-        "global-require": 0,
-        "import/export": 2,
-        "implicit-arrow-linebreak": 0,
-        "no-extra-boolean-cast": 0,
-        "import/no-extraneous-dependencies": 0
-    }
+  "extends": [
+    "airbnb-base",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": [
+    "prettier"
+  ],
+  "rules": {
+    "prettier/prettier": [
+      "error"
+    ],
+    "max-len": 1,
+    "no-console": 0,
+    "no-undef": 0,
+    "no-underscore-dangle": 0,
+    "no-param-reassign": 0,
+    "eol-last": 2,
+    "camelcase": 0,
+    "consistent-return": 0,
+    "global-require": 0,
+    "import/export": 2,
+    "implicit-arrow-linebreak": 0,
+    "no-extra-boolean-cast": 0,
+    "import/no-extraneous-dependencies": 0
+  }
 }
