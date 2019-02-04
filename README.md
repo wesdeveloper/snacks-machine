@@ -1,5 +1,6 @@
 # Machine Snacks
 [![CircleCI](https://circleci.com/gh/weslopes/snacks-machine/tree/master.svg?style=svg)](https://circleci.com/gh/weslopes/snacks-machine/tree/master)
+[![codecov](https://codecov.io/gh/weslopes/snacks-machine/branch/master/graph/badge.svg)](https://codecov.io/gh/weslopes/snacks-machine)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
