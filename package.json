@@ -10,7 +10,8 @@
     "build": "NODE_ENV=production ./node_modules/.bin/babel bin/ -d dist/bin/ && ./node_modules/.bin/babel src/ -d dist/src/",
     "server": "npm run build && node ./dist/bin/index",
     "prettier": "./node_modules/.bin/prettier --write 'src/**/*.js'",
-    "lint": "./node_modules/.bin/eslint src/"
+    "lint": "./node_modules/.bin/eslint src/",
+    "codecov": "./node_modules/.bin/codecov --token=38e2dc16-e84b-45eb-9fbd-fbf37e4e6e54 nyc npm t && nyc report --reporter=text-lcov > coverage.lcov ./node_modules/.bin/codecov"
   },
   "repository": {
     "type": "git",
@@ -46,12 +47,14 @@
   },
   "dependencies": {
     "body-parser": "^1.18.3",
+    "codecov": "^3.1.0",
     "cors": "^2.8.4",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "joi": "^13.4.0",
     "mongoose": "^5.1.6",
-    "morgan": "^1.9.1"
+    "morgan": "^1.9.1",
+    "nyc": "^13.1.0"
   },
   "husky": {
     "hooks": {
