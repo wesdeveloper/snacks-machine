@@ -27,7 +27,7 @@ switch (process.env.NODE_ENV) {
   }
 }
 
-mongoose.connect(mongo_url);
+mongoose.connect(mongo_url, { useNewUrlParser: true });
 
 app.use(logger('dev'));
 app.use(bodyParser.json());

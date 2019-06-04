@@ -1,52 +1,52 @@
-import CardsModel from './cards-model';
+import * as cardsServices from './cards-services';
 
 export default {
   buy: async (req, res) => {
     const { cardid } = req.payload.params;
     const { price, item } = req.payload.body;
 
-    let card = await CardsModel.getById(cardid);
+    try {
+      const card = await cardsServices.buy({ cardid, price, item });
 
-    if (!card) {
-      return res.status(404).send({ message: 'not found!' });
+      if (!card) {
+        return res.status(400).send();
+      }
+
+      if (card.creditResult < 0) {
+        return res.status(304).send();
+      }
+
+      return res.status(201).send({ message: 'success' });
+    } catch (e) {
+      return res.status(500).send();
     }
-
-    if (!card.status) {
-      return res.status(200).send({ message: 'card disabled' });
-    }
-
-    const creditResult = card.credit - price;
-
-    if (creditResult < 0) {
-      return res.status(304).send();
-    }
-
-    card = await CardsModel.buy({ cardid, price, item });
-
-    return res.status(201).send({ message: 'success' });
   },
   create: async (req, res) => {
     const { body } = req.payload;
 
-    const card = await CardsModel.create(body);
+    try {
+      const card = await cardsServices.create(body);
 
-    return res.status(201).send({ card });
+      return res.status(201).send({ card });
+    } catch (e) {
+      return res.status(500).send();
+    }
   },
   getAll: async (req, res) => {
-    const cards = await CardsModel.getAll();
+    const cards = await cardsServices.getAll();
     return res.send({ cards });
   },
   getById: async (req, res) => {
     const { cardid } = req.payload.params;
 
-    let card = await CardsModel.getById(cardid);
+    let card = await cardsServices.getById(cardid);
 
     if (!card) {
       return res.status(404).send({ message: 'not found!' });
     }
 
     if (card.status && card.last_charge !== Date.now()) {
-      card = await CardsModel.defaultCharge(cardid);
+      card = await cardsServices.defaultCharge(cardid);
     }
 
     return res.send({ card });
@@ -55,13 +55,13 @@ export default {
     const { cardid } = req.payload.params;
     const { body } = req.payload;
 
-    let card = await CardsModel.getById(cardid);
+    let card = await cardsServices.getById(cardid);
 
     if (!card) {
       return res.status(404).send({ message: 'not found!' });
     }
 
-    card = await CardsModel.update(cardid, body);
+    card = await cardsServices.update(cardid, body);
 
     return res.status(201).send({ card });
   },

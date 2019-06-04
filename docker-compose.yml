@@ -5,10 +5,12 @@ services:
     depends_on:
       - db
     ports:
-      - "3000:3000"
+      - '3000:3000'
     environment:
       - PORT=3000
       - URL_MONGO_TEST=mongodb://db:27017/snacks_test
       - URL_MONGO_DEVELOPMENT=mongodb://db:27017/snacks_dev
   db:
-    image: "mongo"
+    image: 'mongo'
+    ports:
+      - '27017:27017'
