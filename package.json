@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "body-parser": "^1.18.3",
-    "codecov": "^3.1.0",
+    "codecov": "^3.7.1",
     "cors": "^2.8.4",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
